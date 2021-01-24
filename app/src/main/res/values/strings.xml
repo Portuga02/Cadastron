@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cadastron</string>
+    <string name="id">ID</string>
 </resources>
