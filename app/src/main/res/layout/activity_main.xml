@@ -7,25 +7,32 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-<EditText
-    android:id="@+id/editNome"
-    android:hint="NOME"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/editNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTelefone"
-        android:hint="TELEFONE"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Telefone"
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/editEmail"
-        android:hint="EMAIL"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
-<LinearLayout
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -36,33 +43,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btnNovo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Novo" />
-    <Button
-        android:id="@+id/btnEditar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar" />
+        <Button
+            android:id="@+id/btnNovo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="@dimen/material_emphasis_high_type"
+            android:text="Novo"
+            app:backgroundTint="@color/teal_200" />
 
-    <Button
-        android:id="@+id/btnSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salvar" />
+        <Button
+            android:id="@+id/btnSalvar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Salvar"
+            app:backgroundTint="@color/teal_200" />
 
-    <Button
-        android:id="@+id/btnExcluir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Excluir" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btnEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Editar"
+            app:backgroundTint="@color/teal_200" />
+
+        <Button
+            android:id="@+id/btnExcluir"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Excluir"
+            app:backgroundTint="@color/teal_200" />
+
+    </LinearLayout>
     <ListView
         android:id="@+id/listViewContatos"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </ListView>
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="phone" />
 </LinearLayout>

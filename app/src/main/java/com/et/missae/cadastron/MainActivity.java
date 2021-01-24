@@ -1,19 +1,16 @@
     package com.et.missae.cadastron;
 
-import androidx.appcompat.app.AppCompatActivity;
+    import android.os.Bundle;
+    import android.widget.Button;
+    import android.widget.EditText;
+    import android.widget.ListView;
+    import android.widget.Toast;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
+    import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-
-import java.util.List;
+    import com.google.gson.JsonObject;
+    import com.koushikdutta.async.future.FutureCallback;
+    import com.koushikdutta.ion.Ion;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,21 +53,17 @@ public class MainActivity extends AppCompatActivity {
             if (nome.isEmpty()){
                 editNome.setError("O nome está em branco por favor digite um nome no campo");
             } else if(id.isEmpty()){
-                
                 Ion.with(MainActivity.this)
                         .load(url)
                         .setBodyParameter("nome", nome)
                         .setBodyParameter( "telefone", telefone)
                         .setBodyParameter("email", email)
                         .asJsonObject()
-                        .setCallback(new FutureCallback<JsonObject>() {
+                        .setCallback(( new FutureCallback<JsonObject>() {
                             @Override
                             public void onCompleted(Exception e, JsonObject result) {
-                                
                                 if(result.get("CREATE").getAsString().equals("OK")){
-                                    
                                     int IdRetorno = Integer.parseInt(result.get("ID").getAsString());
-                                    
                                     Toast.makeText(MainActivity.this,"Salvo com sucesso" + IdRetorno,
                                             Toast.LENGTH_LONG).show();
 
@@ -79,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this,"Ocorreu Algum erro ao salvar",Toast.LENGTH_LONG).show();
                                 }
                             }
-                        });
+                        }));
 
-            } else{
-                //UPDATE
+
+
             }
         });
     }
