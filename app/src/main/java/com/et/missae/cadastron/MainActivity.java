@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnNovo, btnSalvar, btnExcluir, btnEditar;
     ListView listViewContatos;
 
-    private final String HOST = "http://192.168.1.11/contatos";
+    private final String HOST = "http://192.168.1.11/contatos";  // lembrar se for servidor local colocar apenas http e não HTTPS
 
 
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
