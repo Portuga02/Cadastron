@@ -15,12 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/ItemId"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            tools:ignore="Suspicious0dp" />
 
         <TextView
             android:id="@+id/ItemNome"
@@ -37,7 +31,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
-            android:id="@+id/textEmail"
+            android:id="@+id/ItemEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email"

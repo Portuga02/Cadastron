@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnNovo, btnSalvar, btnExcluir, btnEditar;
     ListView listViewContatos;
 
-    private final String HOST = "http://192.168.1.11/contatos";  // lembrar se for servidor local colocar apenas http e não HTTPS
+    private final String HOST = "http://192.168.1.25/contatos";  // lembrar se for servidor local colocar apenas http e não HTTPS
 
 
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                                     if (result.get("CREATE").getAsString().equals("OK")) {
                                         int idRetornado = Integer.parseInt(result.get("ID").getAsString());
                                         Toast.makeText(MainActivity.this,
-                                                "O CONTATO FOI SALVO COM SUCESSO NO ID(" + idRetornado + ")",
+                                                "O Contato foi salvo com sucesso utilizando o  ID(" + idRetornado + ")",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(MainActivity.this,
