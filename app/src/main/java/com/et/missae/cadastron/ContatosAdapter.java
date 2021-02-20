@@ -26,12 +26,14 @@ public class ContatosAdapter extends BaseAdapter {
     }
 
     @Override
-    public Contato getItem(int position) {
+    public Contato getItem(int position)
+    {
         return lista.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int position)
+    {
         return 0;
     }
 
@@ -45,7 +47,9 @@ public class ContatosAdapter extends BaseAdapter {
         } else {
             v = convertView;
         }
+
         Contato c = getItem(position);
+
         /*chamadas de elementos*/
         TextView itemNome = (TextView) v.findViewById(R.id.ItemNome);
         TextView itemTelefone = (TextView) v.findViewById(R.id.ItemTelefone);
@@ -54,6 +58,7 @@ public class ContatosAdapter extends BaseAdapter {
         itemNome.setText(c.getNome());
         itemTelefone.setText(c.getTelefone());
         itemEmail.setText(c.getEmail());
+
         return v;
     }
 }

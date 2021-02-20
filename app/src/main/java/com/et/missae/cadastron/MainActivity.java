@@ -3,6 +3,7 @@ package com.et.missae.cadastron;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -50,15 +51,17 @@ public class MainActivity extends AppCompatActivity {
         listViewContatos = (ListView) findViewById(R.id.listViewContatos);
 
         lista = new ArrayList<Contato>();
+
         contatosAdapter = new ContatosAdapter(MainActivity.this, lista);
 
         listViewContatos.setAdapter(contatosAdapter);
 
-        btnSalvar.setOnClickListener(v -> {
-            String id = editId.getText().toString();
-            String nome = editNome.getText().toString();
-            String email = editEmail.getText().toString();
-            String telefone = editTelefone.getText().toString();
+        btnSalvar.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String id = editId.getText().toString();
+                String nome = editNome.getText().toString();
+                String email = editEmail.getText().toString();
+                String telefone = editTelefone.getText().toString();
 
             String url = HOST + "/create.php";
             if (nome.isEmpty()) {
@@ -97,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
 
             }
-        });
+            }    });
     }
 
     public void limpaCampos() {
