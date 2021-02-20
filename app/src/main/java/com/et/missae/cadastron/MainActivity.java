@@ -11,9 +11,13 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
     Button btnNovo, btnSalvar, btnExcluir, btnEditar;
     ListView listViewContatos;
 
-    private final String HOST = "http://192.168.1.25/contatos";  // lembrar se for servidor local colocar apenas http e não HTTPS
+    private final String HOST = "http://192.168.1.29/contatos";  // lembrar se for servidor local colocar apenas http e não HTTPS
+
+    ContatosAdapter contatosAdapter;
+    List<Contato> lista;
 
 
     @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
@@ -41,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         btnEditar = (Button) findViewById(R.id.btnEditar);
 
         listViewContatos = (ListView) findViewById(R.id.listViewContatos);
+
+        lista = new ArrayList<Contato>();
+        contatosAdapter = new ContatosAdapter(MainActivity.this, lista);
+
+        listViewContatos.setAdapter(contatosAdapter);
 
         btnSalvar.setOnClickListener(v -> {
             String id = editId.getText().toString();
@@ -86,5 +98,40 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void limpaCampos() {
+        editId.setText("");
+        editNome.setText("");
+        editTelefone.setText("");
+        editEmail.setText("");
+        editNome.requestFocus();
+    }
+
+    private void listaContatos() {
+        String url = HOST + "/read.php";
+
+        Ion.with(getBaseContext())
+                .load(url)
+                .asJsonArray()
+                .setCallback(new FutureCallback<JsonArray>() {
+
+                    @Override
+                    public void onCompleted(Exception e, JsonArray result) {
+                        for (int i = 0; i < result.size(); i++) {
+                            JsonObject objeto = result.get(i).getAsJsonObject();
+                            Contato c = new Contato();
+
+                            c.setId(objeto.get("id").getAsInt());
+                            c.setNome(objeto.get("Nome").getAsString());
+                            c.setTelefone(objeto.get("Telefone").getAsString());
+                            c.setEmail(objeto.get("Email").getAsString());
+
+                            lista.add(c);
+
+                        }
+                        contatosAdapter.notifyDataSetChanged(); // Funçãoo para ve se tem alterações na listanotificações na lista
+                    }
+                });
     }
 }

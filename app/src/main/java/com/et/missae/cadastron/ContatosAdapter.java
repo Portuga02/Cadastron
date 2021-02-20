@@ -10,24 +10,24 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ContatosAdpter extends BaseAdapter {
+public class ContatosAdapter extends BaseAdapter {
 
     private Context ctx;
-    private List<Contato> Listar;
+    private List<Contato> lista;
 
-    public ContatosAdpter(Context ctx2, List<Contato> Listar2) {
+    public ContatosAdapter(Context ctx2, List<Contato> lista2) {
         ctx = ctx2;
-        Listar = Listar2;
+        lista = lista2;
     }
 
     @Override
     public int getCount() {
-        return Listar.size(); /*retorno do banco de dados*/
+        return lista.size(); /*retorno do banco de dados*/
     }
 
     @Override
     public Contato getItem(int position) {
-        return Listar.get(position);
+        return lista.get(position);
     }
 
     @Override
@@ -37,23 +37,23 @@ public class ContatosAdpter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View V = null;
+        View v = null;
 
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) ctx).getLayoutInflater();
-            V = inflater.inflate(R.layout.item_lista, null);
+            v = inflater.inflate(R.layout.item_lista, null);
         } else {
-            V = convertView;
+            v = convertView;
         }
-        Contato C = getItem(position);
+        Contato c = getItem(position);
         /*chamadas de elementos*/
-        TextView itemNome = (TextView) V.findViewById(R.id.ItemNome);
-        TextView itemTelefone = (TextView) V.findViewById(R.id.ItemTelefone);
-        TextView itemEmail = (TextView) V.findViewById(R.id.ItemEmail);
+        TextView itemNome = (TextView) v.findViewById(R.id.ItemNome);
+        TextView itemTelefone = (TextView) v.findViewById(R.id.ItemTelefone);
+        TextView itemEmail = (TextView) v.findViewById(R.id.ItemEmail);
 
-        itemNome.setText(C.getNome());
-        itemTelefone.setText(C.getTelefone());
-        itemEmail.setText(C.getEmail());
-        return V;
+        itemNome.setText(c.getNome());
+        itemTelefone.setText(c.getTelefone());
+        itemEmail.setText(c.getEmail());
+        return v;
     }
 }
